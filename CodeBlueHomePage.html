@@ -104,9 +104,10 @@ top: -10%;
 }
 
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="NewCss(3).css">
-	<title>CODE BLUE</title>
-	<meta charset="utf-8">
+  <title>CODE BLUE</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -172,7 +173,59 @@ top: -10%;
     u.style.textDecoration= "none";
   }
 
+     function underlineon1(){
+    var w = document.getElementById("whoarewe")
+    w.style.textDecoration= "underline";
+  }
 
+    function underlineoff1(){
+    var w = document.getElementById("whoarewe")
+    w.style.textDecoration= "none";
+  }
+
+       function underlineon2(){
+    var x = document.getElementById("ourgoals")
+    x.style.textDecoration= "underline";
+  }
+
+    function underlineoff2(){
+    var x = document.getElementById("ourgoals")
+    x.style.textDecoration= "none";
+  }
+
+       function underlineon3(){
+    var y = document.getElementById("contactus")
+    y.style.textDecoration= "underline";
+  }
+
+    function underlineoff3(){
+    var y = document.getElementById("contactus")
+    y.style.textDecoration= "none";
+  }
+
+        $(document).ready(function (){
+            $("#whoarewe").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#whowearescroll").offset().top
+                }, 750);
+            });
+        })
+
+        $(document).ready(function (){
+            $("#ourgoals").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#ourgoalsscroll").offset().top
+                }, 750);
+            });
+        })
+
+        $(document).ready(function (){
+            $("#contactus").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#contactusscroll").offset().top
+                }, 750);
+            });
+        })
   </script>
 
 
@@ -183,9 +236,9 @@ top: -10%;
 </head>
 <body>
 
-<div id="gamesection" style="display: none;">
+<div id="gamesection" style="display: none; box-shadow: 1px 2px 4px rgba(255, 255, 255, .9);">
 
-<a href="file:///C:/Users/GWCUser10/Desktop/New%20(2).html">
+<a href="file:///C:/Users/GWCUser10/Desktop/New.html">
 <div id="selectalan" >
   </div>
 </a>
@@ -196,10 +249,15 @@ top: -10%;
 
   <center><div  style="background-color: white; height: 5px; width: 350px;"><div></center>
 
-  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEPYTHON.html"> <div  id="language" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; margin-top: 50px; background-color: #021F38;" onmouseover="selectalan()" onmouseout="selectalanoff()"><p>Python</p></div></a></center>
+  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Git/2016_SIP_WAS_BSA_CodeBlue/CODEBLUEPYTHON.html">
+   <div  id="language" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; margin-top: 50px; background-color: #021F38;" onmouseover="selectalan()" onmouseout="selectalanoff()">
+   <p>Python</p>
+   </div>
+   </a>
+   </center>
 
-  <center><a style="text-decoration: none;" href=""><div  id="language1" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan1()" onmouseout="selectalanoff1()"><p>C++</p></div></a></center>
-  <center><a style="text-decoration: none;" href=""><div  id="language2" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan2()" onmouseout="selectalanoff2()"><p>HTML/Javascript</p></div></a></center>
+  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEC++.html"><div  id="language1" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan1()" onmouseout="selectalanoff1()"><p>C++</p></div></a></center>
+  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEHTML_JAVASCRIPT.html"><div  id="language2" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan2()" onmouseout="selectalanoff2()"><p>HTML/Javascript</p></div></a></center>
 
   </div></center> 
 </div>
@@ -208,14 +266,34 @@ top: -10%;
   
     <div class="collapse" id="aboutstuff" style="height: 100px; width: 170px; z-index: 4; position: absolute; margin-left: 49.7%; margin-top: -1%; background-color: #021F38; box-shadow: 1px 2px 4px rgba(0, 0, 0, .9);">
      <ul>
-     <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px;">Who We Are</li>
-      <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px">Our Goals</li>
-      <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px">Social Media</li>
+
+     <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px;">
+     <div id="whoarewe">
+     <u id="whoarewe" style="text-decoration: none;" onmouseover="underlineon1()" onmouseout="underlineoff1()">
+     Who We Are
+     </u>
+     </div>
+     </li>
+
+      <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px">
+      <div id="ourgoals">
+      <u id="ourgoals" style="text-decoration: none;" onmouseover="underlineon2()" onmouseout="underlineoff2()">
+      Our Goals</u>
+      </div>
+      </li>
+
+      <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px">
+      <div id="contactus">
+      <u id="contactus" style="text-decoration: none;" onmouseover="underlineon3()" onmouseout="underlineoff3()">
+      Social Media</u>
+      </div>
+      </li>
+
       <ul>
       </div>
 
 
-
+<div style="box-shadow: 1px 2px 4px rgba(0, 0, 0, .9);">
 <h1 style="z-index: 2;" class="frontpagetitles"><img src="codebluelogo.png"></h1>
 
 
@@ -233,7 +311,7 @@ top: -10%;
 
 <div style="z-index: 2;" class="loginbutton"><center>LOGIN</center>
 </div>
-
+</div>
 
 
         <h3 class="welcomestuff"></h3>
@@ -264,10 +342,10 @@ top: -10%;
       Start learning now!
       </div> 
 
- <div id="startbutton" class="carousel-caption" style="background-color: #B3D6D5; color: black; font-family: 'Share Tech', sans-serif; font-size: 45px; width: 250px; height: 100px; border-width: 5px; margin-left: 21%; margin-bottom: 7%;" onmouseover="startlearn()" onmouseout="startlearnoff()">
+<a href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEPYTHON.html"><div id="startbutton" class="carousel-caption" style="background-color: #B3D6D5; color: black; font-family: 'Share Tech', sans-serif; font-size: 45px; width: 250px; height: 100px; border-width: 5px; margin-left: 21%; margin-bottom: 7%;" onmouseover="startlearn()" onmouseout="startlearnoff()">
       LET'S GO!
       </div>
-
+</a>
 
     </div>
   </div>
@@ -283,7 +361,7 @@ top: -10%;
   </a>
 </div>
 
-<div style="width: 100%; height: 125px; position: absolute; top: 667px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px;"><center>WHO WE ARE</center></div>
+<div id="whowearescroll" style="width: 100%; height: 125px; position: absolute; top: 667px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>WHO WE ARE</center></div>
 
 <div>
 <center><img  data-toggle="collapse" data-target="#bio1" width="30%" height="30%" style="position: relative; top: 200px; border-radius: 100%;" src="photo.png"></center>
@@ -322,7 +400,7 @@ top: -10%;
 </center>
 </div>
 
-<div style="width: 100%; height: 125px; position: absolute; top: 3100px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px;"><center>OUR GOALS</center></div>
+<div id="ourgoalsscroll" style="width: 100%; height: 125px; position: absolute; top: 3100px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>OUR GOALS</center></div>
 
 <div>
 <p style="text-indent: 30px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 70px; position: absolute; top: 3300px;">We care alot about...</p>
@@ -341,9 +419,9 @@ top: -10%;
   <p>Z member is passionate about</p>
 </div>
 
-<div style="width: 100%; height: 125px; position: absolute; top: 4300px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px;"><center>CONTACT US</center></div>
+<div id="contactusscroll" style="width: 100%; height: 125px; position: absolute; top: 4300px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>CONTACT US</center></div>
 
-<center><p style="position: relative; top: 1450px; font-family: 'Share Tech', sans-serif; color: black; font-size: 25px;">We Love You</p></center>
+<center><p style="position: relative; top: 1450px; font-family: 'Share Tech', sans-serif; color: black; font-size: 25px;"><u>We Love You</u></p></center>
 
 <p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 4600px; left: 2%;">TORI DANTZERWARD</p>
 
