@@ -2,13 +2,14 @@ var jumping = false;
 var yVel = 0;
 var xVel = 5;
 var gravity = 1.2; 
-var ground = 280;
+var list_platforms = [[0,520,750,30], [0,400,200,30]];
+var ground = list_platforms[0][1] - 95;
 
 // Create the canvas
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 600;
-canvas.height = 400;
+canvas.width = 750;
+canvas.height = 550;
 document.body.appendChild(canvas);
 
 
@@ -62,11 +63,12 @@ addEventListener("keyup", function (e) {
 // Reset the game when the player catches a monster
 var reset = function () {
 	hero.x = canvas.width / 2;
-	hero.y = 280;
+	hero.y = ground;
 
 	// Throw the monster somewhere on the screen randomly
 	monster.x = 32 + (Math.random() * (canvas.width - 64));
 	monster.y = 32 + (Math.random() * (canvas.height - 64));
+
 };
 
 var platforms = function (x,y,width,height){
@@ -74,8 +76,12 @@ var platforms = function (x,y,width,height){
 	this.y = y;
 	this.width = width;
 	this.height = height;
-	fillRect(this.x, this.y, this.width, this.height);
-}
+	ctx.fillStyle = "grey";
+	ctx.fillRect(this.x, this.y, this.width, this.height);
+};
+
+
+
 
 // Update game objects
 var update = function (modifier) {
@@ -92,6 +98,11 @@ var update = function (modifier) {
 	if (jumping){
 		yVel += gravity;
         hero.y += yVel;
+
+        //add for loop to check for new ground here *
+        // for (i=0; i<list_platforms.length; i++){
+        // 	if (list_platforms[i][])
+        // }
 
         if (hero.y > ground){
         	yVel = 0;
@@ -126,6 +137,14 @@ var render = function () {
 		ctx.drawImage(monsterImage, monster.x, monster.y);
 	}
 
+
+	// * for loop to create platforms objects
+	for (i=0; i<list_platforms.length; i++){
+		var platform1 = new platforms(list_platforms[i][0],list_platforms[i][1],list_platforms[i][2],list_platforms[i][3]);
+	}
+
+	
+
 	// Score
 	ctx.fillStyle = "rgb(250, 250, 250)";
 	ctx.font = "24px Helvetica";
@@ -143,7 +162,6 @@ var main = function () {
 	render();
 
 	then = now;
-
 	// Request to do this again ASAP
 	requestAnimationFrame(main);
 };
@@ -152,7 +170,7 @@ function jump() {
 	
   if (!jumping) {
 	jumping = true;
-	yVel = -15;
+	yVel = -20;
   }
 
 }
@@ -163,6 +181,7 @@ var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 // Let's play this game!
+
 var then = Date.now();
 reset();
 main();
