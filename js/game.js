@@ -2,8 +2,9 @@ var jumping = false;
 var yVel = 0;
 var xVel = 5;
 var gravity = 1.2; 
-var list_platforms = [[0,520,750,30], [0,400,200,30]];
-var ground = list_platforms[0][1] - 95;
+var list_platforms = [[0,520,750,30], [250,470,90,10], [0,410,180,15], [200,340,90,15], [600,400,100,12], [400,350,120,15], [0,270,285,10]];
+var ground = list_platforms[0][1];
+var movement = false; 
 
 // Create the canvas
 var canvas = document.getElementById("canvas");
@@ -63,7 +64,7 @@ addEventListener("keyup", function (e) {
 // Reset the game when the player catches a monster
 var reset = function () {
 	hero.x = canvas.width / 2;
-	hero.y = ground;
+	hero.y = ground-100;
 
 	// Throw the monster somewhere on the screen randomly
 	monster.x = 32 + (Math.random() * (canvas.width - 64));
@@ -80,36 +81,121 @@ var platforms = function (x,y,width,height){
 	ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
+var currplat = list_platforms[0][1]
 
+var check_ground = function(){
+	console.log('checking ground');
+	for (i=0; i<list_platforms.length; i++){
+        		if ((hero.y+100) == list_platforms[i][1]){
+        			if (hero.x >= list_platforms[i][0]){
+	        			if (hero.x<= (list_platforms[i][0]+list_platforms[i][2])){
+
+	        				currplat = list_platforms[i][1]; 
+	        				console.log(ground);
+	        			}
+	        			else if ((i>0) && (hero.y>= list_platforms[(i-1)][1])){
+	        				ground = list_platforms[(i-1)][1];
+	        				console.log(ground);
+	        				console.log('another');
+	        			}
+	        		else if ((i<0) && (hero.y>= list_platforms[(i-1)][1])){ 
+	        			ground = list_platforms[(i-1)][1];
+	        			console.log(ground);
+	        			console.log('another');
+		        	}
+	        		}
+        		}
+    }
+};
 
 
 // Update game objects
 var update = function (modifier) {
 	if (38 in keysDown) { // Player holding up
-		jump();		
+		jump();	
+		movement = true;	
 	}
 	if (37 in keysDown) { // Player holding left
 		hero.x -= hero.speed * modifier;
+		movement = true;
 	}
 	if (39 in keysDown) { // Player holding right
 		hero.x += hero.speed * modifier;
+		movement = true; 
 	}
 
-	if (jumping){
-		yVel += gravity;
-        hero.y += yVel;
+	// if (movement){
+		if (jumping){
+			yVel += gravity;
+        	hero.y += yVel;
+        	// check_ground();
+        	if (hero.y > currplat-100){
+        		console.log(currplat);
+	        	yVel = 0;
+	        	jumping = false;
+	        	hero.y = currplat-100;
+	        }
+	        else if (hero.y == 420){
+	        	yVel = 0;
+	        	jumping = false;
+	        }
+		}
+		else {
+			// check_ground();
+			hero.y = ground-100;
+		}
+		movement = false; 		
+	//}
 
-        //add for loop to check for new ground here *
-        // for (i=0; i<list_platforms.length; i++){
-        // 	if (list_platforms[i][])
-        // }
+	// // if (jumping){
+	// // 	yVel += gravity;
+ // //        hero.y += yVel;
 
-        if (hero.y > ground){
-        	yVel = 0;
-        	jumping = false;
-        }
+ //        //add for loop to check for new ground here *
+ //        // for (i=0; i<list_platforms.length; i++){
 
-	}
+ //        // 	if ((hero.y+100) == list_platforms[i][1]){
+ //        // 		if (hero.x >= list[i][0]){
+ //        // 			if (hero.x<= (list_platforms[i][0]+list_platforms[i][2])){
+
+ //        // 				ground = list_platforms[i][1]; 
+ //        // 				console.log(ground);
+ //        // 			}
+ //        // 			else if ((i>0) && (hero.y>= list_platforms[(i-1)][1])){
+ //        // 				ground = list_platforms[(i-1)][1];
+ //        // 			}
+
+ //        // 		}
+ //        // 	}
+
+ //        	// if ((list_platforms[i][0]<= hero.x) && (hero.x <= (list_platforms[i][0]+ list_platforms[i][2])) && (list_platforms[i][1] >= (hero.y + 100))){
+ //        	// 	ground = list_platforms[i][1]; 
+ //        	// 	i= list_platforms.length;
+ //        	// }
+ //        	// else if ((i>0) && (list_platforms[i][1] <= (hero.y + 100)) && (list_platforms[(i-1)][1] >= (hero.y + 100))){
+ //        	// 	ground = list_platforms[(i-1)][1];
+ //        	// 	// alert('hi');
+ //        	// }
+ //        	// else {
+ //        	// 	console.log('hi');
+ //        	// }
+ //        	// console.log(ground);
+ //        }
+
+
+ //        // if (hero.y > ground-100){
+ //        // 	yVel = 0;
+ //        // 	jumping = false;
+ //        // 	hero.y = ground - 100;
+
+ //        // }
+ //        // else if (hero.y == 420){
+ //        // 	yVel = 0;
+ //        // 	jumping = false;
+ //        // }
+
+
+	// }
 
 	// Are they touching?
 	if (
@@ -158,6 +244,7 @@ var main = function () {
 	var now = Date.now();
 	var delta = now - then;
 	var tempy = hero.y;
+	check_ground();
 	update(delta / 1000);
 	render();
 
