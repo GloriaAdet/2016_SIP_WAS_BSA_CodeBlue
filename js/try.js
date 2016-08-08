@@ -2,10 +2,14 @@ var jumping = false;
 var yVel = 0;
 var xVel = 5;
 var gravity = 1.2; 
-var list_platforms = [[0,520,750,30], [250,470,90,10], [0,410,180,15], [200,340,90,15], [600,400,100,12], [400,350,120,15], [0,270,285,10]];
+var list_platforms = [[0,520,750,30], [0,420,280,15],  [600,400,100,12], [400,350,120,15], [0,270,185,10]];
 var ground = list_platforms[0];
 var movement = false; 
 var currplat = list_platforms[0];
+
+var list_syntax = [[200,290, 'integers'], [100,100, 'string' ]];
+
+var heroheight = 75; 
 
 // Create the canvas
 var canvas = document.getElementById("canvas");
@@ -34,11 +38,8 @@ heroImage.src = "images/bluesiren.png";
 
 
 // syntax image
-var syntaxReady = false;
+var syntaxReady = true;
 var syntaxImage = new Image();
-syntaxImage.onload = function () {
-	syntaxReady = true;
-};
 syntaxImage.src = "images/script.png";
 
 
@@ -65,11 +66,9 @@ addEventListener("keyup", function (e) {
 // Reset the game when the player catches a syntax
 var reset = function () {
 	hero.x = canvas.width / 2;
-	hero.y = ground[1]-100;
+	hero.y = ground[1]-heroheight;
 
 	// Throw the syntax somewhere on the screen randomly
-	syntax.x = 32 + (Math.random() * (canvas.width - 64));
-	syntax.y = 32 + (Math.random() * (canvas.height - 64));
 
 };
 
@@ -82,40 +81,65 @@ var platforms = function (x,y,width,height){
 	ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
+// var syntax = function (x,y, text) {
+// 	this.x = x;
+// 	this.y = y;
+// 	this.text = text;
+
+// };
+
 var check_horiz = function() {
-	if (((currplat[0] >= hero.x) || ((currplat[0]+ currplat[2])>= hero.x))){
-		console.log('in checkhoriz');
-		hero.y = 420; 
+	console.log('enter checkhoriz');
+	if (((currplat[0] >= (hero.x+2)) || ((currplat[0]+ currplat[2])<= (hero.x+25))) & (hero.y >= (currplat[1]-heroheight))){
+		console.log('inside if checkhoriz');
+		check_ground();
+		console.log(currplat[1]);
+		fall();
 	}
 };
 
-
+var fall = function () {
+	yVel = 30;
+	while (hero.y < ground[1]-heroheight){
+		hero.y += yVel;
+		yVel -= gravity;
+	}
+};
 
 var check_ground = function(){
-	for (i=0; i<list_platforms.length; i++){
-        		if (hero.y+100 >= list_platforms[i][1]) {
+	var check = 0; 
+	for (i=1; i<list_platforms.length; i++){
+        		if (hero.y+heroheight >= list_platforms[i][1]) {
         			if (hero.x >= list_platforms[i][0]) {
         				if (hero.x<= (list_platforms[i][0]+list_platforms[i][2])) {							
-	        				currplat = list_platforms[i]; 
+	        				currplat = list_platforms[i];
+	        				//console.log('before1'); 
+	        				check = 1; 
+	        				break;
 	        			}
 	        		}
-	        		else if ((hero.y+100 >= list_platforms[i][1]) && (!((hero.x >= list_platforms[i][0]) || (hero.x<= (list_platforms[i][0]+list_platforms[i][2]))))) {
-	        			console.log('well uh');
-	        			currplat = ground;
-	        		}
+	        		// else if ((hero.y+100 >= list_platforms[i][1]) && (!((hero.x >= list_platforms[i][0]) || (hero.x<= (list_platforms[i][0]+list_platforms[i][2]))))) {
+	        		// 	console.log('well uh');
+	        		// 	currplat = ground;
+	        		// }
 	        	}
 	        	//dont recomment
-	        	// else if ((i>0) && (hero.y>= list_platforms[(i-1)][1])){
-	        	// 			currplat = list_platforms[(i-1)][1];
-	        	// 			console.log(currplat);
-	        	// 			console.log('another');
-	        	// 		}
-	        	// else if ((i<0) && (hero.y>= list_platforms[(i-1)][1])){ 
-	        	// 		currplat = list_platforms[(i-1)][1];
-	        	// 		console.log(ground);
-	        	// 		console.log('another');
-		        // 	}
+	        	else if ((i>0) && (hero.y>= list_platforms[(i-1)][1])){
+	        				currplat = list_platforms[(i-1)][1];
+	        				console.log(currplat);
+	        				console.log('another');
+	        			}
+	        	else if ((i<0) && (hero.y>= list_platforms[(i-1)][1])){ 
+	        			currplat = list_platforms[(i-1)][1];
+	        			console.log(ground);
+	        			console.log('another');
+		        	}
 	        		}
+
+	if (check==0){
+		currplat = ground;
+		console.log('help me!');
+	}
 
 
 };
@@ -136,21 +160,21 @@ var update = function (modifier) {
 	}
 
 
-		if (jumping){
-			yVel += gravity;
-        	hero.y += yVel;
-        	// check_ground();
-        	if (hero.y >= currplat[1]-30){
-        		console.log('ground');
-	        	yVel = 0;
-	        	jumping = false;
-	        	
-	        }
-	        else if (hero.y == 420){
-	        	yVel = 0;
-	        	jumping = false;
-	        }
-		}
+	if (jumping){
+		yVel += gravity;
+    	hero.y += yVel;
+    	// check_ground();
+    	if (hero.y >= (currplat[1]-heroheight-100)){
+    		console.log('ground');
+        	yVel = 0;
+        	jumping = false;
+        	
+        }
+        else if (hero.y == 420){
+        	yVel = 0;
+        	jumping = false;
+        }
+	}
 		
 
 	// Are they touching?
@@ -175,15 +199,21 @@ var render = function () {
 		ctx.drawImage(heroImage, hero.x, hero.y);
 	}
 
-	if (syntaxReady) {
-		ctx.drawImage(syntaxImage, syntax.x, syntax.y);
-	}
+		for (i=0; i < list_syntax.length; i++){
+			ctx.drawImage(syntaxImage, list_syntax[i][0], list_syntax[i][1]);
+			ctx.fillStyle = "white";
+			ctx.font = "16px Helvetica";
+			ctx.textBaseline = "top";
 
+			ctx.fillText(list_syntax[i][2], list_syntax[i][0]+25, list_syntax[i][1]+5);
+		}
 
 	// * for loop to create platforms objects
 	for (i=0; i<list_platforms.length; i++){
 		var platform1 = new platforms(list_platforms[i][0],list_platforms[i][1],list_platforms[i][2],list_platforms[i][3]);
 	}
+
+	
 
 	
 
