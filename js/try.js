@@ -7,7 +7,7 @@ var ground = list_platforms[0];
 var movement = false; 
 var currplat = list_platforms[0];
 
-var list_syntax = [[200,290, 'integers'], [100,100, 'string' ]];
+var list_syntax = [[200,290, 'integers'], [100,100, ' string' ], [300, 300, '  input'], [400,400, 'output'], [100,200, '    >'] ];
 
 var heroheight = 75; 
 
@@ -145,6 +145,17 @@ var check_ground = function(){
 };
 
 
+var check_syntax = function () {
+	for (i=0; i<list_syntax.length; i++){
+		if (
+			(hero.x <= (list_syntax[i][0]+100)) &&
+			(hero.x >= list_syntax[i][0]) &&
+			(hero.y <= (list_syntax[i][1]-50)) 
+
+			)
+	}
+};
+
 // Update game objects
 var update = function (modifier) {
 	if (38 in keysDown) { // Player holding up
@@ -179,10 +190,10 @@ var update = function (modifier) {
 
 	// Are they touching?
 	if (
-		hero.x <= (syntax.x + 32)
-		&& syntax.x <= (hero.x + 32)
+		hero.x <= (syntax.x + 100)
+		&& syntax.x <= (hero.x + 50)
 		&& hero.y <= (syntax.y + 32)
-		&& syntax.y <= (hero.y + 32)
+		&& syntax.y <= (hero.y + 75)
 	) {
 		++syntaxsCaught;
 		reset();
