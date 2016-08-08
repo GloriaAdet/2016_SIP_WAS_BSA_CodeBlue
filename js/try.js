@@ -183,7 +183,8 @@ var pause = function () {
 		ctx.drawImage(bubble, list_syntax[i][0], list_syntax[i][1]);
 		ctx.textAlign= "center";
 		ctx.fillText(list_syntax[i][2], list_syntax[i][0], list_syntax[i][1]);
-		setTimeout(pause, 1000);
+		setTimeout(pause, 100);
+
 
 	}
 };
