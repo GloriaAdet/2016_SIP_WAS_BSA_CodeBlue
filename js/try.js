@@ -7,7 +7,7 @@ var ground = list_platforms[0];
 var movement = false; 
 var currplat = list_platforms[0];
 
-var list_syntax = [[200,290, 'integers'], [100,100, ' string' ], [300, 300, '  input'], [400,400, 'output'], [100,200, '    >'] ];
+var list_syntax = [[200,290, 'integers', 'Integers are a type of data.'], [100,100, ' string' ], [300, 300, '  input'], [400,400, 'output'], [100,200, '    >'] ];
 
 var heroheight = 75; 
 
@@ -18,6 +18,18 @@ canvas.width = 750;
 canvas.height = 550;
 document.body.appendChild(canvas);
 
+canvas.addEventListener("mousedown", getPosition, false);
+
+function getPosition(event)
+{
+  var x = event.x;
+  var y = event.y;
+
+  x -= canvas.offsetLeft;
+  y -= canvas.offsetTop;
+
+  alert("x:" + x + " y:" + y);
+}
 
 // Background image
 var bgReady = false;
@@ -41,6 +53,11 @@ heroImage.src = "images/bluesiren.png";
 var syntaxReady = true;
 var syntaxImage = new Image();
 syntaxImage.src = "images/script.png";
+
+
+//speech bubble
+var bubble = new Image();
+bubble.src = "images/speechbubble.png";
 
 
 // Game objects
@@ -102,7 +119,7 @@ var fall = function () {
 	yVel = 30;
 	while (hero.y < ground[1]-heroheight){
 		hero.y += yVel;
-		yVel -= gravity;
+		yVel += gravity;
 	}
 };
 
@@ -149,12 +166,29 @@ var check_syntax = function () {
 	for (i=0; i<list_syntax.length; i++){
 		if (
 			(hero.x <= (list_syntax[i][0]+100)) &&
-			(hero.x >= list_syntax[i][0]) &&
-			(hero.y <= (list_syntax[i][1]-50)) 
-
-			)
+			(hero.x >= (list_syntax[i][0]-20)) &&
+			(hero.y <= (list_syntax[i][1]-90)) &&
+			(hero.y <= (list_syntax[i][1] +100))
+			) {
+				console.log('touching syntax');
+			pause();
+				break;
+		}
 	}
 };
+
+var pause = function () {
+	var check_pause = true;
+	if (check_pause){
+		ctx.drawImage(bubble, list_syntax[i][0], list_syntax[i][1]);
+		ctx.textAlign= "center";
+		ctx.fillText(list_syntax[i][2], list_syntax[i][0], list_syntax[i][1]);
+		setTimeout(pause, 1000);
+
+	}
+};
+
+
 
 // Update game objects
 var update = function (modifier) {
@@ -242,6 +276,7 @@ var main = function () {
 	var delta = now - then;
 	var tempy = hero.y;
 	check_ground();
+	check_syntax();
 	update(delta / 1000);
 	render();
 
