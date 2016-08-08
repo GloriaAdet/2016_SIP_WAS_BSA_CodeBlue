@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" href="bluesiren.png">
+
+
 <style>
   body{
   background-color: #FCFEFF;
@@ -101,6 +104,18 @@ top: -10%;
   -moz-filter: blur(10px);
   -o-filter: blur(10px);
   -ms-filter: blur(10px);
+}
+
+.person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 29%;
+    height: 29%;
+    opacity: 0.7;
+}
+
+.person:hover {
+    border-color: #DBDBDB;
 }
 
 </style>
@@ -226,19 +241,39 @@ top: -10%;
                 }, 750);
             });
         })
+
+        $(document).ready(function (){
+            $("#thisproject").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#thisprojectscroll").offset().top
+                }, 750);
+            });
+        })
+
+        $("#divname").hide();
+$(window).scroll(function() {
+    if ($(window).scrollTop() > 100) {
+        $("#divname").fadeIn("slow");
+    }
+    else {
+        $("#divname").fadeOut("fast");
+    }
+});
+  </script>    
   </script>
 
 
 
 <link href='https://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
-
+<a name="top"></a>
 
 </head>
 <body>
 
+
 <div id="gamesection" style="display: none; box-shadow: 1px 2px 4px rgba(255, 255, 255, .9);">
 
-<a href="file:///C:/Users/GWCUser10/Desktop/New.html">
+<a href="file:///C:/Users/GWCLT29/Desktop/CodeBlueHomePage%20(2).html">
 <div id="selectalan" >
   </div>
 </a>
@@ -249,15 +284,15 @@ top: -10%;
 
   <center><div  style="background-color: white; height: 5px; width: 350px;"><div></center>
 
-  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Git/2016_SIP_WAS_BSA_CodeBlue/CODEBLUEPYTHON.html">
+  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCLT29/Desktop/CODEBLUEPYTHON.html">
    <div  id="language" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; margin-top: 50px; background-color: #021F38;" onmouseover="selectalan()" onmouseout="selectalanoff()">
    <p>Python</p>
    </div>
    </a>
    </center>
 
-  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEC++.html"><div  id="language1" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan1()" onmouseout="selectalanoff1()"><p>C++</p></div></a></center>
-  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEHTML_JAVASCRIPT.html"><div  id="language2" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan2()" onmouseout="selectalanoff2()"><p>HTML/Javascript</p></div></a></center>
+  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCLT29/Desktop/CODEBLUEC++.html"><div  id="language1" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan1()" onmouseout="selectalanoff1()"><p>C++</p></div></a></center>
+  <center><a style="text-decoration: none;" href="file:///C:/Users/GWCLT29/Desktop/CODEBLUEHTML_JAVASCRIPT.html"><div  id="language2" style="color: white; font-family: 'Share Tech', sans-serif; font-size: 60px; background-color: #021F38;" onmouseover="selectalan2()" onmouseout="selectalanoff2()"><p>HTML/Javascript</p></div></a></center>
 
   </div></center> 
 </div>
@@ -269,7 +304,7 @@ top: -10%;
 
      <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px;">
      <div id="whoarewe">
-     <u id="whoarewe" style="text-decoration: none;" onmouseover="underlineon1()" onmouseout="underlineoff1()">
+     <u id="whoarewe" style="font-family: 'Share Tech', sans-serif; font-size: 17px; text-decoration: none;" onmouseover="underlineon1()" onmouseout="underlineoff1()">
      Who We Are
      </u>
      </div>
@@ -277,15 +312,15 @@ top: -10%;
 
       <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px">
       <div id="ourgoals">
-      <u id="ourgoals" style="text-decoration: none;" onmouseover="underlineon2()" onmouseout="underlineoff2()">
-      Our Goals</u>
+      <u id="ourgoals" style="font-family: 'Share Tech', sans-serif; font-size: 17px; text-decoration: none;" onmouseover="underlineon2()" onmouseout="underlineoff2()">
+      Our Goals</u> 
       </div>
       </li>
 
       <li style="color: white; z-index: 5; list-style-type: none; padding: 6.5px">
       <div id="contactus">
-      <u id="contactus" style="text-decoration: none;" onmouseover="underlineon3()" onmouseout="underlineoff3()">
-      Social Media</u>
+      <u id="contactus" style="font-family: 'Share Tech', sans-serif; font-size: 17px; text-decoration: none;" onmouseover="underlineon3()" onmouseout="underlineoff3()">
+      Contact Us</u>
       </div>
       </li>
 
@@ -299,18 +334,19 @@ top: -10%;
 
 <ul style="z-index: 2;" class="forul">
 
-  <li id="about" class="forli" onmouseover="underlineon()" onmouseout="underlineoff()" style=" color: #23527c; "><div data-toggle="collapse" data-target="#aboutstuff"><u style="text-decoration: none;">About Us</u></div></li>
+  <li id="about" class="forli" onmouseover="underlineon()" onmouseout="underlineoff()" style=" color: #021F38;"><div data-toggle="collapse" data-target="#aboutstuff"><a style="color: #23527c;" href="javascript:">About Us</a></div></li>
 
 <li class="forli">
 
   <a href="javascript:forgamedisplay('gamesection')"><div id= "games" style="color: #23527c;">Games</div></a>
 </li>
 
+<li class="forli">
+  <a href="javascript:"><div id="thisproject" style="color: #23527c;">This Project</div></a>
+</li>
+
 </ul>
 
-
-<div style="z-index: 2;" class="loginbutton"><center>LOGIN</center>
-</div>
 </div>
 
 
@@ -342,7 +378,7 @@ top: -10%;
       Start learning now!
       </div> 
 
-<a href="file:///C:/Users/GWCUser10/Desktop/CODEBLUEPYTHON.html"><div id="startbutton" class="carousel-caption" style="background-color: #B3D6D5; color: black; font-family: 'Share Tech', sans-serif; font-size: 45px; width: 250px; height: 100px; border-width: 5px; margin-left: 21%; margin-bottom: 7%;" onmouseover="startlearn()" onmouseout="startlearnoff()">
+<a href="javascript:forgamedisplay('gamesection')"><div id="startbutton" class="carousel-caption" style="background-color: #B3D6D5; color: black; font-family: 'Share Tech', sans-serif; font-size: 45px; width: 250px; height: 100px; border-width: 5px; margin-left: 21%; margin-bottom: 7%;" onmouseover="startlearn()" onmouseout="startlearnoff()">
       LET'S GO!
       </div>
 </a>
@@ -364,18 +400,22 @@ top: -10%;
 <div id="whowearescroll" style="width: 100%; height: 125px; position: absolute; top: 667px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>WHO WE ARE</center></div>
 
 <div>
-<center><img  data-toggle="collapse" data-target="#bio1" width="30%" height="30%" style="position: relative; top: 200px; border-radius: 100%;" src="photo.png"></center>
+<center><img class ="img-circle person" data-toggle="collapse" data-target="#bio1" width="30%" height="30%" style="position: relative; top: 200px; border-radius: 100%;" src="photo.png"></center>
 
-<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 250px;">TORI DANTZLERWARD</p></div></center>
+<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 200px;">TORI DANTZLERWARD</p></div></center>
 
-<center><div id="bio1" class="collapse" style="margin-top: 10px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 20px;">Some bio about Tori!! BLAH BLAH BLAH BLAH BLAH BLAH! THE END! I LOVE WAFFLES!</div>
+<center><div id="bio1" class="collapse" style="margin-top: 10px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 20px;">
+<p>Loves Drawing</p> 
+<p>Loves Math</p> 
+<p>Loves Macarons</p> 
+<p>Needs sleep all the time</p></div>
 </center>
 </div>
 
 <div>
-<center><img  data-toggle="collapse" data-target="#bio2" width="30%" height="30%" style="position: relative; top: 50px; border-radius: 100%;" src="TranPic.jpg"></center>
+<center><img class="img-circle person" data-toggle="collapse" data-target="#bio2" width="30%" height="30%" style="position: relative; top: 50px; border-radius: 100%;" src="TranPic.jpg"></center>
 
-<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 100px;">TRAN NGUYEN</p></div></center>
+<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 50px;">TRAN NGUYEN</p></div></center>
 
 <center><div id="bio2" class="collapse" style="margin-top: 10px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 20px;">Some bio about Tran!! BLAH BLAH BLAH BLAH BLAH BLAH! THE END! I LOVE PANCAKES!</div>
 </center>
@@ -383,65 +423,133 @@ top: -10%;
 
 
 <div>
-<center><img  data-toggle="collapse" data-target="#bio3" width="30%" height="30%" style="position: relative; top: 50px; border-radius: 100%;" src="AnniePic.jpg"></center>
+<center><img class="img-circle person" data-toggle="collapse" data-target="#bio3" width="30%" height="30%" style="position: relative; top: 50px; border-radius: 100%;" src="AnniePic.jpg"></center>
 
-<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 75px; ">ANNIE GOMEZ</p></div></center>
+<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 70px; ">ANNIE GOMEZ</p></div></center>
 
 <center><div id="bio3" class="collapse" style=" margin-top: 25px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 20px;">Some bio about ANNIE!! BLAH BLAH BLAH BLAH BLAH BLAH! THE END! I LOVE TAMALES!</div>
 </center>
 </div>
 
 <div>
-<center><img  data-toggle="collapse" data-target="#bio4" width="30%" height="30%" style="position: relative; top: 50px; border-radius: 100%;" src="GloriaPic.jpg"></center>
+<center><img class="img-circle person" data-toggle="collapse" data-target="#bio4" width="30%" height="30%" style="position: relative; top: 50px; border-radius: 100%;" src="GloriaPic.jpg"></center>
 
-<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 75px;">GLORIA ADETOBI-FOLAWIYO</p></div></center>
+<center><div><p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; margin-top: 70px;">GLORIA ADETOBI-FOLAWIYO</p></div></center>
 
 <center><div id="bio4" class="collapse" style="margin-top: 25px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 20px;">Some bio about GLORIA!! BLAH BLAH BLAH BLAH BLAH BLAH! THE END! I LOVE JOLLOF RICE!</div>
 </center>
 </div>
 
+
+
 <div id="ourgoalsscroll" style="width: 100%; height: 125px; position: absolute; top: 3100px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>OUR GOALS</center></div>
 
 <div>
-<p style="text-indent: 30px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 70px; position: absolute; top: 3300px;">We care alot about...</p>
-<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 25px; position: absolute; top: 3410px; left: 1%;">blah blah blah blah blah blah blah blah blah blah  blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p></div>
+<p style="text-indent: 30px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 70px; position: absolute; top: 3300px;">We care a lot about...</p>
+<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 25px; position: absolute; top: 3410px; left: 1%;">We care about people knowing how to code-- Kids and girls in particular. We want this site to help them get interested in coding. Sometimes, subjects like this seem like a chore to learn, but with this site we want to eliminate that. We want these games to be fun and addicting so that learning seems like less of a drag. IT TOOK SO MUCH WORK OH MY GOODNESS PLEASE LOVE US THIS IS ALL FOR YOU..</p></div>
 
 <div>
-<p style="text-indent: 30px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 70px; position: absolute; top: 3550px;">We want to see...</p>
-<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 25px; position: absolute; top: 3660px; width: 700px; left: 1%;">blah blah blah blah blah blah blah blah blah blah  blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p></div>
+<p style="text-indent: 30px; color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 70px; position: absolute; top: 3600px;">We want to see...</p>
+<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 25px; position: absolute; top: 3700px; width: 700px; left: 1%;">We want to see the people who are excited or curious about coding, learning from the games we created. We want to see young people become knowledgeable and interested in what the field of technology holds so that the world can benefit from more advanced technology.</p></div>
 
-<div style="height: 450px; width: 450px; background-color: blue; border-style: solid; border-radius: 100%; position: absolute; top: 3550px; margin-left: 60%;"></div>
+<img src="peoplecoding.jpg" style="height: 450px; width: 450px; border-radius: 100%; position: absolute; top: 3600px; margin-left: 60%;"></div>
 
-<div style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4000px; left: 2%;">
-  <p>W member is passionate about</p>
-  <p>X member is passionate about</p>
-  <p>Y member is passionate about</p>
-  <p>Z member is passionate about</p>
-</div>
 
 <div id="contactusscroll" style="width: 100%; height: 125px; position: absolute; top: 4300px; left: 0%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>CONTACT US</center></div>
 
-<center><p style="position: relative; top: 1450px; font-family: 'Share Tech', sans-serif; color: black; font-size: 25px;"><u>We Love You</u></p></center>
 
 <p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 4600px; left: 2%;">TORI DANTZERWARD</p>
 
 <div style="background-color: #021F38; position: absolute; top: 4675px; left: 2%; width: 95%; height: 8px;">
+
+
+<img style="position: relative; top: 40px; left: 4.5%;" src="icon_email.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 5.3%; top:280px">victoryusd@gmail.com</p>
 </div>
 
-<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 5600px; left: 2%;">TRAN NGUYEN</p>
 
-<div style="background-color: #021F38; position: absolute; top: 5675px; left: 2%; width: 95%; height: 8px;">
+<!--Tran contact Line-->
+<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 5300px; left: 2%;">TRAN NGUYEN</p>
+
+<div style="background-color: #021F38; position: absolute; top: 5375px; left: 2%; width: 95%; height: 8px;">
+
+<!--HERE YOOOO-->
+
+<!--EMAIL ICON-->
+<img style="position: relative; top: 40px; left: 3%;" src="icon_email.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 4.7%; top:280px">tran00n@gmail.com</p>
+
+<!--INSTAGRAM ICON-->
+<img style="position: relative; top: 30px; left: 10%; width:210px; height:225px;" src="instagram_icon.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 33%; top:280px">tran's instagram</p>
+
+<!--TWITTER ICON-->
+<img style="position: relative; top: 30px; left: 17%; width:210px; height:225px;" src="twitter_icon.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 57%; top:280px">tran's twitter</p>
+
+<!--SNAPCHAT ICON-->
+<img style="position: relative; top: 30px; left: 25%; width:210px; height:225px;" src="snapchat_icon.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 81.5%; top:280px">tran's snapchat</p>
 </div>
 
-<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 6600px; left: 2%;">ANNIE GOMEZ</p>
 
-<div style="background-color: #021F38; position: absolute; top: 6675px; left: 2%; width: 95%; height: 8px;">
+
+<!--Annie contact Line-->
+<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 6000px; left: 2%;">ANNIE GOMEZ</p>
+
+<div style="background-color: #021F38; position: absolute; top: 6075px; left: 2%; width: 95%; height: 8px;">
+<img style="position: relative; top: 40px; left: 3%;" src="icon_email.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 1%; top:280px">anniestephanie00@gmail.com</p> 
 </div>
 
-<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 7600px; left: 2%;">GLORIA ADETOBI-FOLAWIYO</p>
 
-<div style="background-color: #021F38; position: absolute; top: 7675px; left: 2%; width: 95%; height: 8px;">
+
+<!--Gloria contact Line-->
+<p style="color: #021F38; font-family: 'Share Tech', sans-serif; font-size: 50px; position: absolute; top: 6670px; left: 2%;">GLORIA ADETOBI-FOLAWIYO</p>
+
+<div style="background-color: #021F38; position: absolute; top: 6745px; left: 2%; width: 95%; height: 8px;">
+<!---EMAIL ICON-->
+<img style="position: relative; top: 40px; left: 3%;" src="icon_email.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 4.5%; top:280px">gadetobi@gmail.com</p>
+
+<!--INSTAGRAM ICON-->
+<img style="position: relative; top: 30px; left: 10%; width:210px; height:225px;" src="instagram_icon.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 33%; top:280px">Gloria's instagram</p>
+
+<!--TWITTER ICON-->
+<img style="position: relative; top: 30px; left: 17%; width:210px; height:225px;" src="twitter_icon.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 57%; top:280px">gloria's twitter</p>
+
+<!--SNAPCHAT ICON-->
+<img style="position: relative; top: 30px; left: 25%; width:210px; height:225px;" src="snapchat_icon.PNG">
+<p style="color: #BABCB3; font-family: 'Share Tech', sans-serif; font-size: 30px; position: absolute; top: 4600px; left: 81.5%; top:280px">gloria's snapchat</p>
+
+
+
+<!--THIS IS THE HEADER FOR THE "THIS PROJECT" PAGE-->
+<div id="thisprojectscroll" style="width: 106.5%; height: 125px; position: absolute; top: 600px; left: -3%; background-color: #B3D6D5; font-family: 'Share Tech', sans-serif; color: white; font-size: 100px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);"><center>THIS PROJECT</center></div>
+
+<img style="position: relative; top: 490px; left: 53%; width:600px; height:400px;" src="gwc.jpg">
+
+<div style="position: relative; top:140px; background-color:#FFFFFF; width:700px; height:100px;">
+<p style = "color:#021F38; font-family: 'Share Tech', sans-serif; font-size: 30px;">Girls Who Code Summer Immersion Program is a free, seven week program that teaches girls how to code. It explores several different computer programming languages including Python, C++, and HTML/CSS/JavaScript. The students make many complex projects using all the languages learned and at the end of the full seven weeks, present a final project they have been working on for the final two weeks of the program.</p>
 </div>
 
+<div style="position: relative; top:450px; background-color:#FFFFFF; width:1250px; height:100px;">
+<p style = "color:#021F38; font-family: 'Share Tech', sans-serif; font-size: 30px;">For our final project, we decided to make a website with games that taught people how to code in Python in particular. We felt it was important to make games that were fun so that younger people would find learning to code less of a "school subject" and more of a hobby they thought was interesting. That way, younger people (and really all people) would be extra prepared for college and other things they may experience later on in their lives. We decided that Gloria and Tori were going to make the website itself and Annie and Tran were going to focus on making the games. We had a great time making this and we hope it is really useful to you!
+</p>
+</div>
+<img style="position: relative; top: 700px; left: 2%; width:600px; height:400px;" src="gwc.jpg">
+
+
+<div style="position: absolute; top:2000px; left: -3%; background-color:#B3D6D5; width:1360px; height:300px;">
+<center><p style = "color:#021F38; font-family: 'Share Tech', sans-serif; font-size: 15px; top: 460px;">Copyright 2016 whatever sounds professional </p></center>
+<center><p style = "color:#021F38; font-family: 'Share Tech', sans-serif; font-size: 15px; top: 460px;">TTAG GWC 8/5/16</p></center> 
+<center><p style = "color:#021F38; font-family: 'Share Tech', sans-serif; font-size: 15px; top: 460px;">We are so cool</p></center> 
+<center><p style = "color:#021F38; font-family: 'Share Tech', sans-serif; font-size: 15px; top: 460px;">We are so professional</p></center> 
+
+
+<div id="backtotop" style="position:fixed; color: #021F38; height:50px; width:50px; left:70%; top:395px;"><img src="up.PNG"></div>
+</div>
 </body>
 </html>
