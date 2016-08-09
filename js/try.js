@@ -2,12 +2,13 @@ var jumping = false;
 var yVel = 0;
 var xVel = 5;
 var gravity = 1.2; 
-var list_platforms = [[0,520,750,30], [0,420,280,15], [600,400,100,15], [400,350,120,15], [0,270,185,15], [0,90,60,15], [150,120,90,15], [170,220,60,15], [230,200,70,15], [400,380,190,15], [580,105,170,15], [350,70,100,15], [380,200,100,15], [380,200,15,100], [600,225,90, 15]];
+// var list_platforms = [[0,520,750,30], [0,420,280,15], [600,400,100,15], [400,350,120,15], [0,270,185,15], [0,90,60,15], [150,120,90,15], [170,220,60,15], [230,200,70,15], [400,380,190,15], [580,105,170,15], [350,70,100,15], [380,200,100,15], [380,200,15,100], [600,225,90, 15]];
+var list_platforms = [[0,520,750,30], [30,420,80,15], [600,350,100,15], [0,270,185,15], [0,90,60,15], [150,120,90,15], [220,220,60,15], [400,440,190,15], [580,105,170,15], [350,70,100,15], [380,200,100,15], [600,225,90, 15]];
 var ground = list_platforms[0];
 var movement = false; 
 var currplat = list_platforms[0];
 
-var list_syntax = [[200,290, 'integers', 'Integers are a type of data.'], [100,100, ' string' ], [300, 300, '  input'], [400,400, 'output'], [100,200, '    >'] ];
+var list_syntax = [[200,290, 'integers'], [10,230, 'string' ], [380,170, 'boolean' ], [100, 470, ' float' ], [600,70, '    +' ], [150,90, '    -' ], [600,310, '  print' ], [470, 410, '    =' ], [20, 390, '    *' ], [303, 234, '    >' ], [234, 435, '    <' ], [325, 435, 'input' ], [123, 645, '   !=' ], [645, 490, '   ==' ], [563, 154, '    %' ]];
 
 var heroheight = 75; 
 
@@ -171,7 +172,7 @@ var check_syntax = function () {
 			(hero.y <= (list_syntax[i][1] +100))
 			) {
 				console.log('touching syntax');
-			pause();
+			// pause();
 				break;
 		}
 	}
@@ -245,22 +246,22 @@ var render = function () {
 		ctx.drawImage(heroImage, hero.x, hero.y);
 	}
 
-		for (i=0; i < list_syntax.length; i++){
-			ctx.drawImage(syntaxImage, list_syntax[i][0], list_syntax[i][1]);
-			ctx.fillStyle = "white";
-			ctx.font = "16px Helvetica";
-			ctx.textBaseline = "top";
-
-			ctx.fillText(list_syntax[i][2], list_syntax[i][0]+25, list_syntax[i][1]+5);
-		}
+	
 
 	// * for loop to create platforms objects
 	for (i=0; i<list_platforms.length; i++){
 		var platform1 = new platforms(list_platforms[i][0],list_platforms[i][1],list_platforms[i][2],list_platforms[i][3]);
 	}
 
-	
+	//for loop to create syntax
+	for (i=0; i < list_syntax.length; i++){
+				ctx.drawImage(syntaxImage, list_syntax[i][0], list_syntax[i][1]);
+				ctx.fillStyle = "white";
+				ctx.font = "16px Helvetica";
+				ctx.textBaseline = "top";
 
+				ctx.fillText(list_syntax[i][2], list_syntax[i][0]+25, list_syntax[i][1]+5);
+			}
 	
 
 	// Score
@@ -268,7 +269,7 @@ var render = function () {
 	ctx.font = "24px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Syntax caught: " + syntaxsCaught, 32, 32);
+	ctx.fillText("Syntax caught: " + syntaxsCaught + "/" + list_syntax.length, 32, 32);
 };
 
 // The main game loop
@@ -290,7 +291,7 @@ function jump() {
 	
   if (!jumping) {
 	jumping = true;
-	yVel = -20;
+	yVel = -15;
   }
 
 }
