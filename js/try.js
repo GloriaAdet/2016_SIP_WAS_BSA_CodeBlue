@@ -11,6 +11,7 @@ var currplat = list_platforms[0];
 var list_syntax = [[200,290, 'integers'], [10,230, 'string' ], [380,170, 'boolean' ], [100, 470, ' float' ], [600,70, '    +' ], [150,90, '    -' ], [600,310, '  print' ], [470, 410, '    =' ], [20, 390, '    *' ], [303, 234, '    >' ], [234, 435, '    <' ], [325, 435, 'input' ], [123, 645, '   !=' ], [645, 490, '   ==' ], [563, 154, '    %' ]];
 
 var heroheight = 75; 
+var listlength = list_syntax.length;
 
 // Create the canvas
 var canvas = document.getElementById("canvas");
@@ -40,6 +41,10 @@ bgImage.onload = function () {
 };
 bgImage.src = "images/bluebricks.jpg";
 
+var endGame = false;
+var endGameImage = new Image();
+endGameImage.src = "endscreen.jpg";
+
 
 // Hero image
 var heroReady = false;
@@ -59,6 +64,8 @@ syntaxImage.src = "images/script.png";
 //speech bubble
 var bubble = new Image();
 bubble.src = "images/speechbubble.png";
+
+var platformReady = true; 
 
 
 // Game objects
@@ -172,6 +179,9 @@ var check_syntax = function () {
 			(hero.y <= (list_syntax[i][1] +100))
 			) {
 				console.log('touching syntax');
+				++syntaxsCaught;
+				list_syntax.splice(i,1);
+
 			// pause();
 				break;
 		}
@@ -225,14 +235,13 @@ var update = function (modifier) {
 		
 
 	// Are they touching?
-	if (
-		hero.x <= (syntax.x + 100)
-		&& syntax.x <= (hero.x + 50)
-		&& hero.y <= (syntax.y + 32)
-		&& syntax.y <= (hero.y + 75)
-	) {
-		++syntaxsCaught;
-		reset();
+	if (syntaxsCaught== listlength){
+		bgReady = false;
+		heroReady = false;
+		platformReady = false;
+		syntaxReady= false; 
+		endGame = true; 
+
 	}
 };
 
@@ -247,21 +256,29 @@ var render = function () {
 	}
 
 	
-
+	if (platformReady){
 	// * for loop to create platforms objects
-	for (i=0; i<list_platforms.length; i++){
-		var platform1 = new platforms(list_platforms[i][0],list_platforms[i][1],list_platforms[i][2],list_platforms[i][3]);
+		for (i=0; i<list_platforms.length; i++){
+			var platform1 = new platforms(list_platforms[i][0],list_platforms[i][1],list_platforms[i][2],list_platforms[i][3]);
+		}
 	}
 
+
+	if (syntaxReady){
 	//for loop to create syntax
-	for (i=0; i < list_syntax.length; i++){
+		for (i=0; i < list_syntax.length; i++){
 				ctx.drawImage(syntaxImage, list_syntax[i][0], list_syntax[i][1]);
 				ctx.fillStyle = "white";
 				ctx.font = "16px Helvetica";
 				ctx.textBaseline = "top";
 
 				ctx.fillText(list_syntax[i][2], list_syntax[i][0]+25, list_syntax[i][1]+5);
-			}
+		}
+	}
+
+	if (endGame){
+		ctx.drawImage(endGameImage, 0,0);
+	}
 	
 
 	// Score
@@ -269,7 +286,7 @@ var render = function () {
 	ctx.font = "24px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Syntax caught: " + syntaxsCaught + "/" + list_syntax.length, 32, 32);
+	ctx.fillText("Syntax caught: " + syntaxsCaught + "/" + listlength, 32, 32);
 };
 
 // The main game loop
